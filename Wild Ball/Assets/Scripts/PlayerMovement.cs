@@ -12,7 +12,7 @@ namespace WildBall.Inputs
         public float jumpForce = 5f;
         private Rigidbody playerRB;
 
-        
+
         private void Awake()
         {
             playerRB = GetComponent<Rigidbody>();
@@ -20,7 +20,7 @@ namespace WildBall.Inputs
 
         public void MoveCharacter(Vector3 movement)
         {
-            playerRB.MovePosition(playerRB.position + movement * speed);
+            playerRB.MovePosition(playerRB.position + movement * speed * Time.fixedDeltaTime);
         }
 
         public void Jump()
@@ -33,6 +33,11 @@ namespace WildBall.Inputs
         public void ResetValues()
         {
             speed = 2;
+        }
+
+        public void StopHorizontalMovement()
+        {
+            playerRB.linearVelocity = new Vector3(0f, playerRB.linearVelocity.y, 0f);
         }
     }
     

@@ -11,11 +11,6 @@ public class ButtonController : MonoBehaviour
     private bool isButtonClicked = false;
     void OnCollisionEnter(Collision other)
     {
-        void Awake()
-        {
-
-        }
-
         if (other.gameObject.CompareTag("Player"))
         {
             isNearButton = true;

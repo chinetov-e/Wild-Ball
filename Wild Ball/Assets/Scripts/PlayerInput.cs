@@ -6,10 +6,10 @@ public class PlayerInput : MonoBehaviour
 {
     public LayerMask groundLayer;
     public Transform groundCheck;
-    public float groundCheckRadius = 1f;
+    public float groundCheckRadius = 5f;
     private bool isGrounded;
     private bool jumpRequested;
-    
+
     private Vector3 movement;
     private PlayerMovement playerMovement;
 
@@ -34,9 +34,13 @@ public class PlayerInput : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (movement != Vector3.zero)
+        if (movement.sqrMagnitude > 0.01f)
         {
-            playerMovement.MoveCharacter(movement * Time.fixedDeltaTime);
+            playerMovement.MoveCharacter(movement);
+        }
+        else
+        {
+            playerMovement.StopHorizontalMovement();
         }
 
         if (jumpRequested)
