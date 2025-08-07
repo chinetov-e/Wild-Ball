@@ -141,7 +141,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2838e27d17a9e4f25adb29e8d93e3284, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loseCanvas: {fileID: 0}
+  loseCanvas: {fileID: 3326970063261670142, guid: 074f58df7e707458f94e2d695a1846d5, type: 3}
+  sparks: {fileID: 0}
+  flash: {fileID: 0}
 --- !u!4 &6718370589624644635 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3969036272369092221, guid: 380287f50b6d85c44a78fc73bcd3bbce, type: 3}

@@ -21,12 +21,14 @@ public class LevelController : MonoBehaviour
 
     public void Restart()
     {
+        TouchController.isTouched = false;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         Time.timeScale = 1;
     }
 
     public void NextLevel()
     {
+        PlayerInput.coinsCollected = 0;
         int currentIndex = SceneManager.GetActiveScene().buildIndex;
         int nextIndex = currentIndex + 1;
 

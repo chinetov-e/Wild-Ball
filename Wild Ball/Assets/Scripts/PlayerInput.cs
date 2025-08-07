@@ -13,6 +13,11 @@ public class PlayerInput : MonoBehaviour
     private Vector3 movement;
     private PlayerMovement playerMovement;
 
+    public static int coinsCollected;
+
+    [SerializeField] private ParticleSystem sparks;
+    [SerializeField] private ParticleSystem flash;
+
     void Awake()
     {
         playerMovement = GetComponent<PlayerMovement>();
@@ -29,6 +34,15 @@ public class PlayerInput : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             jumpRequested = true;
+        }
+
+        if (TouchController.isTouched == true)
+        {
+            flash.Play();
+            sparks.Play();
+            flash.transform.parent = null;
+            sparks.transform.parent = null;
+            Destroy(gameObject);
         }
     }
 
@@ -48,5 +62,15 @@ public class PlayerInput : MonoBehaviour
             playerMovement.Jump();
             jumpRequested = false;
         }
+    }
+
+    void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.CompareTag("Coin"))
+        {
+            coinsCollected++;
+        }
+
+        Debug.Log(coinsCollected);
     }
 }
