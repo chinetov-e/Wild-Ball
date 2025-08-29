@@ -6,6 +6,7 @@ public class ButtonController : MonoBehaviour
     [SerializeField] private Animator buttonAnimator;
     [SerializeField] private Animator spike1;
     [SerializeField] private Animator spike2;
+    [SerializeField] private Animator spike3;
     [SerializeField] private GameObject hintCanvas;
     private bool isNearButton = false;
     private bool isButtonClicked = false;
@@ -34,6 +35,7 @@ public class ButtonController : MonoBehaviour
             buttonAnimator.SetTrigger("PlayAnim");
             spike1.SetTrigger("SpikeOff");
             spike2.SetTrigger("SpikeOff");
+            spike3.SetTrigger("SpikeOff");
             isButtonClicked = true;
             hintCanvas.SetActive(false);
         }

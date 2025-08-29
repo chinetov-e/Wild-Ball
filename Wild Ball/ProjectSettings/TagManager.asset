@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Lose
   - Coin
+  - LastCanvas
   layers:
   - Default
   - TransparentFX

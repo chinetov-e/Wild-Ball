@@ -25,5 +25,10 @@ public class CoinCollector : MonoBehaviour
             allCoinsCollected = true;
             ps.Play();
         }
+
+        if (WinController.isFinished)
+        {
+            ps.Stop();
+        }
     }
 }

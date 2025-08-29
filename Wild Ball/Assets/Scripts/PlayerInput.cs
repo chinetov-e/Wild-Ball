@@ -6,7 +6,7 @@ public class PlayerInput : MonoBehaviour
 {
     public LayerMask groundLayer;
     public Transform groundCheck;
-    public float groundCheckRadius = 5f;
+    public float groundCheckDistance = 1.2f;
     private bool isGrounded;
     private bool jumpRequested;
 
@@ -29,7 +29,7 @@ public class PlayerInput : MonoBehaviour
 
         movement = new Vector3(horizontal, 0, vertical).normalized;
 
-        isGrounded = Physics.CheckSphere(groundCheck.position, groundCheckRadius, groundLayer);
+        isGrounded = IsGrounded();
 
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
@@ -70,7 +70,10 @@ public class PlayerInput : MonoBehaviour
         {
             coinsCollected++;
         }
+    }
 
-        Debug.Log(coinsCollected);
+    private bool IsGrounded()
+    {
+        return Physics.Raycast(groundCheck.position, Vector3.down, out RaycastHit hit, groundCheckDistance, groundLayer);
     }
 }

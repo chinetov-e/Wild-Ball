@@ -1,6 +1,5 @@
 using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
-using UnityEditor.Callbacks;
 using UnityEngine;
 
 namespace WildBall.Inputs
@@ -8,7 +7,7 @@ namespace WildBall.Inputs
     [RequireComponent(typeof(Rigidbody))]
     public class PlayerMovement : MonoBehaviour
     {
-        [SerializeField, Range(0, 10)] private float speed = 5f;
+        [SerializeField, Range(0, 10)] private float speed = 10f;
         public float jumpForce = 5f;
         private Rigidbody playerRB;
 
@@ -20,12 +19,15 @@ namespace WildBall.Inputs
 
         public void MoveCharacter(Vector3 movement)
         {
-            playerRB.MovePosition(playerRB.position + movement * speed * Time.fixedDeltaTime);
+            playerRB.AddForce(movement * speed, ForceMode.Force);
         }
 
         public void Jump()
         {
-            playerRB.linearVelocity = new Vector3(playerRB.linearVelocity.x, 0f, playerRB.linearVelocity.z);
+            Vector3 vel = playerRB.linearVelocity;
+            vel.y = 0f;
+            playerRB.linearVelocity = vel;
+
             playerRB.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
 

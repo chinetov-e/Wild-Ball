@@ -24,6 +24,7 @@ public class LevelController : MonoBehaviour
         TouchController.isTouched = false;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         Time.timeScale = 1;
+        PlayerInput.coinsCollected = 0;
     }
 
     public void NextLevel()
